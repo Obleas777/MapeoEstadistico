@@ -22,8 +22,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door"></i> Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="admin.html"><i class="bi bi-person"></i> Administrador</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door"></i>
+                            Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="admin.html"><i class="bi bi-person"></i>
+                            Administrador</a></li>
                 </ul>
             </div>
         </div>
@@ -35,47 +37,44 @@
                 <div class="col-lg-6">
                     <div class="text-center my-5">
                         <h1 class="display-5 fw-bolder text-white mb-2">Panel de Administración</h1>
-                        <p class="lead text-white-50 mb-4">Gestione los datos de la plataforma y la participación ciudadana.</p>
+                        <p class="lead text-white-50 mb-4">Gestione los datos de la plataforma y la participación
+                            ciudadana.</p>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="py-5">
+    <section class="py-5" id="admin-dashboard">
         <div class="container px-5 my-5">
-            <h2 class="fw-bolder mb-4">Cambio de Contraseña</h2>
-            <form id="passwordForm">
-                <div class="mb-3">
-                    <label for="newPassword" class="form-label">Nueva Contraseña</label>
-                    <input type="password" class="form-control" id="newPassword" required>
+            <div class="row gx-5">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="feature bg-gradient text-white rounded-3 mb-3"><i class="bi bi-bar-chart-line"></i>
+                    </div>
+                    <h2 class="h4 fw-bolder">Gestionar Mapeo Estadístico</h2>
+                    <p>Acceda y modifique los datos de mapeo estadístico.</p>
+                    <a class="text-decoration-none" href="gestionar-mapeo.html">Gestionar <i
+                            class="bi bi-arrow-right"></i></a>
                 </div>
-                <div class="mb-3">
-                    <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
-                    <input type="password" class="form-control" id="confirmPassword" required>
-                    <div class="invalid-feedback">Las contraseñas no coinciden.</div>
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="feature bg-gradient text-white rounded-3 mb-3"><i class="bi bi-person-check"></i></div>
+                    <h2 class="h4 fw-bolder">Gestión de Usuarios</h2>
+                    <p>Visualice y administre los usuarios registrados en la plataforma.</p>
+                    <a class="text-decoration-none" href="gestionar-usuarios.html">Gestionar <i
+                            class="bi bi-arrow-right"></i></a>
                 </div>
-                <button type="submit" class="btn btn-primary">Cambiar Contraseña</button>
-            </form>
+                <div class="col-lg-4">
+                    <div class="feature bg-gradient text-white rounded-3 mb-3"><i class="bi bi-clipboard-check"></i>
+                    </div>
+                    <h2 class="h4 fw-bolder">Gestión de Participación Ciudadana</h2>
+                    <p>Revisar las propuestas y participación de los ciudadanos.</p>
+                    <a class="text-decoration-none" href="gestionar-participacion.html">Gestionar <i
+                            class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
         </div>
     </section>
-
-    <script>
-        document.getElementById('passwordForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            let password = document.getElementById('newPassword').value;
-            let confirmPassword = document.getElementById('confirmPassword').value;
-            let confirmPasswordInput = document.getElementById('confirmPassword');
-            
-            if (password !== confirmPassword) {
-                confirmPasswordInput.classList.add('is-invalid');
-            } else {
-                confirmPasswordInput.classList.remove('is-invalid');
-                alert('Contraseña cambiada con éxito');
-                this.reset();
-            }
-        });
-    </script>
+   
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
