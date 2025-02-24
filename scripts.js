@@ -7,32 +7,31 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18
 }).addTo(map);
 
-// Definición de colonias con problemas
 var colonias = [
     {
         nombre: "Rincón de Romos Centro",
         coords: [
-            [22.2300, -102.3210],
-            [22.2300, -102.3190],
-            [22.2280, -102.3190],
-            [22.2280, -102.3210]
+            [22.2300, -102.3240],  // Esquina superior izquierda
+            [22.2300, -102.3220],  // Esquina superior derecha
+            [22.2280, -102.3220],  // Esquina inferior derecha
+            [22.2280, -102.3240]   // Esquina inferior izquierda
         ],
         problema: "Fallas de agua",
         color: "blue"
     },
     {
-        nombre: "Colonia San José",
+        nombre: "Colonia",
         coords: [
-            [22.2210, -102.3220],
-            [22.2210, -102.3200],
-            [22.2190, -102.3200],
-            [22.2190, -102.3220]
+            [22.2230, -102.3220],  
+            [22.2230, -102.3200],  
+            [22.2210, -102.3200],  
+            [22.2210, -102.3220]   
         ],
         problema: "Alumbrado público apagado",
         color: "yellow"
     },
     {
-        nombre: "Fraccionamiento Magisterial",
+        nombre: "Colonia",
         coords: [
             [22.2260, -102.3160],
             [22.2260, -102.3140],
