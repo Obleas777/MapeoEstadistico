@@ -1,5 +1,5 @@
 // Inicializar el mapa centrado en Rincón de Romos
-var map = L.map('map').setView([22.232, -102.331], 15); // Ajusté el zoom para que la zona se vea mejor
+var map = L.map('map').setView([22.229454, -102.320402], 14); // Coordenadas del centro de Rincón de Romos
 
 // Capa de mapa base de OpenStreetMap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -9,7 +9,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Definir la zona con el problema
 var zonaProblema = {
-    nombre: "Santa cruz",
+    nombre: "Santa Cruz",
     coords: [
         [22.235941, -102.331601], [22.236359, -102.330914], [22.236299, -102.330421], 
         [22.236001, -102.330442], [22.235842, -102.329863], [22.235584, -102.329885], 
