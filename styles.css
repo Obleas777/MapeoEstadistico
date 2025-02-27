@@ -10926,68 +10926,112 @@ input, button {
 .input-field:focus + label {
   color: #007bff;
 }
-
-
-
-/* Navbar transparente y centrado */
-.navbar {
-  background-color: transparent !important; /* Transparente */
-  position: absolute; /* Superpuesto */
-  width: 100%;
-  top: 0;
-  z-index: 1000; /* Encima del contenido */
-  padding: 15px 0; /* Espaciado superior e inferior */
+/* Colores */
+:root {
+  --primary-color: #ff9800; /* Naranja vibrante */
+  --text-dark: #ffffff; /* Texto oscuro */
+  --hover-color: #ff6f00; /* Naranja oscuro para hover */
 }
 
-/* Centra los elementos del menú */
+/* Estilos del navbar */
+.navbar {
+  background: transparent !important; /* Completamente transparente */
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  padding: 15px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Navbar con efecto al hacer scroll */
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.8) !important; /* Se vuelve semitransparente al hacer scroll */
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Centrar elementos */
 .navbar-nav {
-  margin: 0 auto;
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-/* Estilos de los enlaces del navbar */
-.navbar-nav .nav-link {
-  font-size: 1rem; /* Tamaño de texto más pequeño */
-  font-weight: normal;
-  color: white !important; /* Enlaces blancos */
-  padding: 8px 15px;
-  transition: color 0.3s ease-in-out;
+/* Espaciado entre elementos */
+.navbar-nav .nav-item {
+  margin: 0 10px;
 }
 
-/* Íconos dentro del navbar */
-.navbar-nav .nav-link i {
+/* Estilo de los enlaces */
+.navbar-nav .nav-link {
   font-size: 1rem;
-  margin-right: 5px;
+  font-weight: bold;
+  color: var(--text-dark) !important;
+  padding: 10px 15px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
 }
 
 /* Efecto hover */
 .navbar-nav .nav-link:hover {
-  color: #ddd !important;
+  color: var(--hover-color) !important;
 }
 
-/* Ajuste para dispositivos móviles */
+/* Línea animada debajo del enlace activo */
+.navbar-nav .nav-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 3px;
+  background: var(--primary-color);
+  transition: width 0.3s ease-in-out;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+/* Íconos en los enlaces */
+.navbar-nav .nav-link i {
+  font-size: 1rem;
+  margin-right: 5px;
+  color: var(--primary-color);
+}
+
+/* Botón de menú en versión móvil */
+.navbar-toggler {
+  border: none;
+  outline: none;
+}
+
+.navbar-toggler-icon {
+  filter: invert(0); /* Mantiene el color oscuro para que combine con el fondo claro */
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .navbar-nav {
     flex-direction: column;
     text-align: center;
   }
-  
-  .navbar-nav .nav-link {
-    font-size: 1.2rem;
-    padding: 10px;
+
+  .navbar-nav .nav-item {
+    margin: 10px 0;
+  }
+
+  .navbar-collapse.show {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 0;
+    border-radius: 10px;
   }
 }
 
-@media (max-width: 991px) { 
-  .navbar-collapse.show {
-    backdrop-filter: blur(10px) brightness(80%); /* Desenfoque y leve oscurecimiento */
-    background-color: rgba(0, 0, 0, 0.3); /* Muy sutil transparencia */
-    padding: 10px 0;
-    border-radius: 10px; /* Bordes suaves para que no se vea un cuadro feo */
-  }
-}
 
 
 
