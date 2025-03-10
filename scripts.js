@@ -155,3 +155,4 @@ L.polygon(zonaElPotrero.coords, {
     dashArray: "3, 3",
     zIndexOffset: 1000
 }).addTo(map).bindPopup(`<strong>${zonaElPotrero.nombre}</strong><br>Problema: ${zonaElPotrero.problema}`);
+
