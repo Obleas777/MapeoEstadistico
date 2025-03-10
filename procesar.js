@@ -6,7 +6,7 @@ document.querySelector("form").addEventListener("submit", function(e) {
     var formData = new FormData(this);
 
     // Usar fetch para enviar los datos al servidor de forma asincrónica
-    fetch("php/send_email.php", {
+    fetch("php/procesar.php", {
         method: "POST",
         body: formData
     })
