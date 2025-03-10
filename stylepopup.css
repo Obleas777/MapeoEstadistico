@@ -30,4 +30,75 @@
     top: 10px;
     right: 10px;
   }
+  /* Estilos generales de la tabla */
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Cabecera de la tabla */
+.table thead {
+  background-color: #343a40;
+  color: white;
+  font-weight: bold;
+}
+
+/* Estilo de las filas */
+.table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f1f3f5;
+}
+
+/* Efecto hover en las filas */
+.table tbody tr:hover {
+  background-color: #e2e6ea;
+  cursor: pointer;
+}
+
+/* Estilo de las celdas */
+.table td, .table th {
+  padding: 12px;
+  text-align: left;
+  vertical-align: middle;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Enlaces dentro de las celdas */
+.table a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.table a:hover {
+  text-decoration: underline;
+}
+
+/* Diseño de las celdas de imagen */
+.table td img {
+  max-width: 100px;
+  height: auto;
+}
+
+/* Diseño general de las tablas responsivas */
+.table-responsive {
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+/* Añadir un borde redondeado a la tabla */
+.table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Personalización para un mejor espacio entre las celdas */
+.table td, .table th {
+  padding: 15px;
+}
+
   

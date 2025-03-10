@@ -44,10 +44,11 @@ window.onclick = function(event) {
     }
 };
 
-// Función para cerrar el modal cuando se haga clic en el botón "Ok"
+// Función para cerrar el modal y recargar la página cuando se haga clic en el botón "Ok"
 document.getElementById("closePopup").addEventListener("click", function() {
     var popup = document.getElementById("popupModal");
     if (popup) {
         popup.style.display = "none"; // Cerrar el modal al hacer clic en "Ok"
+        location.reload(); // Recargar la página
     }
 });
