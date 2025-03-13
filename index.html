@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Plataforma para el mapeo estadístico y la recolección de información social." />
     <meta name="author" content="Presidencia Municipal De Rincon de Romos" />
-    <title>Plataforma de Transparencia y Participación Ciudadana</title>
+    <title>Plataforma de Participación Ciudadana</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="styles.css" rel="stylesheet" />
@@ -43,8 +43,6 @@
         </div>
     </nav>
 
-
-
     <header class="hero-header">
         <div class="content">
             <h1 class="display-5 fw-bolder text-white mb-2">
@@ -55,53 +53,50 @@
             </p>
             <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
                 <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Comenzar</a>
-                <a class="btn btn-outline-light btn-lg px-4" href="#!">Más información</a>
+                <a class="btn btn-outline-light btn-lg px-4" href="participacion-ciudadana.html">Más información</a>
             </div>
         </div>
     </header>
 
-
     <section class="py-5 border-bottom" id="features">
         <div class="container px-5 my-5">
-            <div class="row gx-5">
-                <div class="col-lg-4">
-                    <div class="feature bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                    <h2 class="h4 fw-bolder">Participación Ciudadana</h2>
-                    <p>Queremos escuchar tu decisión, ¡anímate a colaborar con la comunidad!
-                    </p>
-                    <a class="text-decoration-none" href="participacion-ciudadana.html">Ver más <i
-                            class="bi bi-arrow-right"></i></a>
+            <div class="row gx-5 align-items-center">
+                <!-- Participación Ciudadana (Izquierda) -->
+                <div class="col-lg-5 mb-5 mb-lg-0 text-center"> <!-- Centrado aquí -->
+                    <div class="feature bg-gradient text-white rounded-3 mb-3">
+                        <i class="bi bi-house-door fs-1"></i> <!-- Icono centrado -->
+                    </div>
+                    <h2 class="h4 fw-bolder">Participación Ciudadana</h2> <!-- Texto centrado -->
+                    <p>Queremos escuchar tu decisión, ¡anímate a colaborar con la comunidad!</p> <!-- Texto centrado -->
+                    <a class="text-decoration-none" href="participacion-ciudadana.html">Ver más <i class="bi bi-arrow-right"></i></a>
                 </div>
-
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="feature bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
-                    <h2 class="h4 fw-bolder">Mapeo Estadístico</h2>
-                    <p>Muestra datos clave de forma interactiva y accesible para toda la comunidad
-                        .</p>
-                    <a class="text-decoration-none" href="mapeo-estadistico.html">Ver más <i
-                            class="bi bi-arrow-right"></i></a>
+    
+                <!-- Espacio Central (Icono o contenido intermedio) -->
+                <div class="col-lg-2 text-center mb-5 mb-lg-0">
+                    <i class="bi bi-building fs-1 text-muted"></i> <!-- Icono centrado -->
                 </div>
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="feature bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
-                    <h2 class="h4 fw-bolder">Transparencia</h2>
-                    <p>Haz que la información clave esté al alcance de todos para una rendición de cuentas transparente.
-                    </p>
-                    <a class="text-decoration-none" href="transparencia.html">Ver más <i
-                            class="bi bi-arrow-right"></i></a>
+    
+                <!-- Mapeo Estadístico (Derecha) -->
+                <div class="col-lg-5 mb-5 mb-lg-0 text-center"> <!-- Centrado aquí -->
+                    <div class="feature bg-gradient text-white rounded-3 mb-3">
+                        <i class="bi bi-collection fs-1"></i> <!-- Icono centrado -->
+                    </div>
+                    <h2 class="h4 fw-bolder">Mapeo Estadístico</h2> <!-- Texto centrado -->
+                    <p>Muestra datos clave de forma interactiva y accesible para toda la comunidad.</p> <!-- Texto centrado -->
+                    <a class="text-decoration-none" href="mapeo-estadistico.html">Ver más <i class="bi bi-arrow-right"></i></a> <!-- Texto centrado -->
                 </div>
-
             </div>
         </div>
     </section>
+    
     <!-- Modal (Pop-up) -->
     <div id="popupModal" class="modal">
         <div class="modal-content">
             <p>¡Datos enviados correctamente!</p>
             <!-- Botón para cerrar el modal -->
-            <button id="closePopup" class="btn btn-primary" >Ok</button>
+            <button id="closePopup" class="btn btn-primary">Ok</button>
         </div>
     </div>
-
 
     <section class="bg-light py-5" id="contacto">
         <div class="container px-5 my-5">
@@ -127,7 +122,6 @@
                         </div>
                         <div class="d-grid"><button class="btn btn-primary btn-lg" type="submit">Enviar</button></div>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -138,6 +132,7 @@
             <p class="m-0 text-center text-white">Copyright &copy;</p>
         </div>
     </footer>
+
     <script src="popup.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
