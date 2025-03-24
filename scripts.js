@@ -151,14 +151,68 @@ var zonaBoquilla = {
     problema: "Drenaje obstruido",
     color: "green"
 };
-
+var zonaColonia = {
+    nombre: "Colonia",
+    coords: [
+        [22.235403757059004, -102.31105558508737], 
+        [22.235304446956413, -102.30793349398219], 
+        [22.23143129806931, -102.30834118972788], 
+        [22.231490885785856, -102.3113989078206]
+    ],
+    problema: "Problema sin especificar", // Agrega el problema que corresponda
+    color: "yellow" // Puedes cambiar el color según el caso
+};
+var zonaSantaAnita = {
+    nombre: "Santa Anita",
+    coords: [
+        [22.227565693371638, -102.32141597658787],
+        [22.22735216463307, -102.31697155636417],
+        [22.22550736201857, -102.31695278100247],
+        [22.225750688649583, -102.31837703390357],
+        [22.224946219378484, -102.31844408912877],
+        [22.22333726702074, -102.31841726703651],
+        [22.22324539727139, -102.31853260201723],
+        [22.223247880238375, -102.31862111490936],
+        [22.223419204854512, -102.3186479369979],
+        [22.224298171339715, -102.31924070518086],
+        [22.224995878108498, -102.31920851867703],
+        [22.225052985629425, -102.31993807955831],
+        [22.22475875752252, -102.32059387962293],
+        [22.225471359565418, -102.32110081713301],
+        [22.22625844541136, -102.32145218649823],
+        [22.226817099901414, -102.32149241964625],
+        [22.227565693389067, -102.32141865890277]
+    ],
+    problema: "Problema sin especificar", // Agrega el problema que corresponda
+    color: "darkorange" // Puedes cambiar el color según el caso
+};
+var zonaSantaElena = {
+    nombre: "Santa Elena",
+    coords: [
+        [22.234561570235137, -102.32523370338224],
+        [22.234477156146923, -102.32147861091984],
+        [22.233921014988606, -102.31925237745723],
+        [22.23418170643684, -102.31883797615514],
+        [22.23418418921016, -102.31879237860463],
+        [22.23405384355188, -102.31864351601328],
+        [22.233018522280375, -102.3186998423731],
+        [22.233004903739253, -102.32003986392792],
+        [22.23323083783421, -102.32369303263343],
+        [22.23328049362894, -102.32492148428823],
+        [22.23379194729687, -102.32513203769564],
+        [22.234564089831114, -102.32522859721759]
+    ],
+    problema: "Problema sin especificar", // Agrega el problema que corresponda
+    color: "black" // Puedes cambiar el color según el caso
+};
 // Santa Cruz (prioridad alta)
 L.polygon(zonaSantaCruz.coords, {
     color: "darkred",
     fillColor: zonaSantaCruz.color,
-    fillOpacity: 0.6, // Aumentar opacidad para que predomine
-    weight: 3, // Un borde más grueso para que sobresalga
-    zIndexOffset: 1200 // Mayor prioridad
+    fillOpacity: 0.3, // Aumentar opacidad para que predomine
+    weight: 2, // Un borde más grueso para que sobresalga
+    dashArray: "3, 3",
+    zIndexOffset: 800 // Mayor prioridad
 }).addTo(map).bindPopup(`<strong>${zonaSantaCruz.nombre}</strong><br>Problema: ${zonaSantaCruz.problema}`);
 
 // Barrio de Chora (prioridad media, debajo de Santa Cruz)
@@ -233,6 +287,33 @@ L.polygon(zonaBoquilla.coords, {
     fillOpacity: 0.5,       
     weight: 2.5,            
     zIndexOffset: 700,
-    dashArray: "3, 3",      // Borde punteado
+    dashArray: "3, 3",      
       
 }).addTo(map).bindPopup(`<strong>${zonaBoquilla.nombre}</strong><br>Problema: ${zonaBoquilla.problema}`);
+
+L.polygon(zonaColonia.coords, {
+    color: "yellow", 
+    fillColor: zonaColonia.color,
+    fillOpacity: 0.3,
+    weight: 2.5,            
+    zIndexOffset: 700,
+    dashArray: "4, 4",     
+}).addTo(map).bindPopup(`<strong>${zonaColonia.nombre}</strong><br>Problema: ${zonaColonia.problema}`);
+
+L.polygon(zonaSantaAnita.coords, {
+    color: "darkorange", 
+    fillColor: zonaSantaAnita.color,
+    fillOpacity: 0.4,
+    weight: 2,
+    dashArray: "3, 3",     
+    zIndexOffset: 900,
+}).addTo(map).bindPopup(`<strong>${zonaSantaAnita.nombre}</strong><br>Problema: ${zonaSantaAnita.problema}`);
+// Santa Elena (prioridad media)
+L.polygon(zonaSantaElena.coords, {
+    color: "black", // Puedes ajustar el color a tu preferencia
+    fillColor: zonaSantaElena.color,
+    fillOpacity: 0.4,
+    weight: 2,
+    dashArray: "3, 3",     
+    zIndexOffset: 900
+}).addTo(map).bindPopup(`<strong>${zonaSantaElena.nombre}</strong><br>Problema: ${zonaSantaElena.problema}`);
