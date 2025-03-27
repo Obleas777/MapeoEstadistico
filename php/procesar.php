@@ -12,10 +12,17 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     exit("Método no permitido");
 }
 
-$colonia = isset($_POST['colonia']) ? $conn->real_escape_string($_POST['colonia']) : '';
-$calle = isset($_POST['calle']) ? $conn->real_escape_string($_POST['calle']) : '';
-$tipo_falla = isset($_POST['tipo_falla']) ? $conn->real_escape_string($_POST['tipo_falla']) : '';
-$descripcion = isset($_POST['descripcion']) ? $conn->real_escape_string($_POST['descripcion']) : '';
+// Obtener y validar los datos del formulario
+$colonia = isset($_POST['colonia']) ? trim($_POST['colonia']) : '';
+$calle = isset($_POST['calle']) ? trim($_POST['calle']) : '';
+$tipo_falla = isset($_POST['tipo_falla']) ? trim($_POST['tipo_falla']) : '';
+$descripcion = isset($_POST['descripcion']) ? trim($_POST['descripcion']) : '';
+
+// Verificar que los campos necesarios no estén vacíos
+if (empty($colonia) || empty($calle) || empty($tipo_falla) || empty($descripcion)) {
+    echo json_encode(["success" => false, "error" => "Todos los campos son obligatorios."]);
+    exit;
+}
 
 // Procesar imagen (si se adjunta)
 $imagen_ruta = "";
@@ -23,6 +30,21 @@ if (!empty($_FILES['imagen']['name'])) {
     $imagen_nombre = basename($_FILES['imagen']['name']);
     $imagen_tmp = $_FILES['imagen']['tmp_name'];
     $directorio = "uploads/";
+
+    // Verificar si el archivo es una imagen válida
+    $image_file_type = strtolower(pathinfo($imagen_nombre, PATHINFO_EXTENSION));
+    $allowed_types = ['jpg', 'jpeg', 'png', 'gif'];
+
+    if (!in_array($image_file_type, $allowed_types)) {
+        echo json_encode(["success" => false, "error" => "El archivo no es una imagen válida."]);
+        exit;
+    }
+
+    // Verificar tamaño del archivo (por ejemplo, máximo 5MB)
+    if ($_FILES['imagen']['size'] > 5000000) {
+        echo json_encode(["success" => false, "error" => "El archivo es demasiado grande."]);
+        exit;
+    }
 
     // Crear directorio si no existe
     if (!file_exists($directorio)) {
@@ -33,14 +55,19 @@ if (!empty($_FILES['imagen']['name'])) {
     move_uploaded_file($imagen_tmp, $imagen_ruta);
 }
 
-// Insertar en la base de datos
-$sql = "INSERT INTO reportes (colonia, calle, tipo_falla, descripcion, imagen) 
-        VALUES ('$colonia', '$calle', '$tipo_falla', '$descripcion', '$imagen_ruta')";
-if ($conn->query($sql) === TRUE) {
-    echo json_encode(["success" => true]);
+// Usar prepared statements para insertar de manera segura
+$stmt = $conn->prepare("INSERT INTO reportes (colonia, calle, tipo_falla, descripcion, imagen) VALUES (?, ?, ?, ?, ?)");
+$stmt->bind_param("sssss", $colonia, $calle, $tipo_falla, $descripcion, $imagen_ruta);
+
+// Ejecutar la consulta
+if ($stmt->execute()) {
+    // Retornar datos del reporte enviado para actualizar el mapa
+    echo json_encode(["success" => true, "colonia" => $colonia, "tipo_falla" => $tipo_falla]);
 } else {
-    echo json_encode(["success" => false, "error" => $conn->error]);
+    echo json_encode(["success" => false, "error" => $stmt->error]);
 }
 
-
-
+// Cerrar la conexión
+$stmt->close();
+$conn->close();
+?>
