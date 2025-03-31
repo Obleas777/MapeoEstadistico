@@ -2,11 +2,11 @@
 <html lang="es">
 
 <head>
-<meta charset="utf-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Plataforma para el mapeo estadístico y la recolección de información social." />
-    <meta name="author" content="Presidencia Municipal De Rincon de Romos" />
-    <title>Plataforma de Transparencia y Participación Ciudadana</title>
+    <meta name="description" content="Plataforma para la gestión de mensajes de contacto." />
+    <meta name="author" content="Presidencia Municipal De Rincón de Romos" />
+    <title>Mensajes de Contacto - Plataforma de Transparencia</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="http://localhost/Estadia2025/styles.css" rel="stylesheet" />
@@ -31,57 +31,49 @@
 
     <header class="hero-header">
         <div class="content">
-            <h1 class="display-5 fw-bolder text-white mb-2">Panel de Administración</h1>
-            <p class="lead text-white-50 mb-4">Gestione los reportes y datos de participación ciudadana.</p>
+            <h1 class="display-5 fw-bolder text-white mb-2">Panel de Mensajes</h1>
+            <p class="lead text-white-50 mb-4">Revise y administre los mensajes de contacto enviados por los ciudadanos.</p>
         </div>
     </header>
 
-    <section class="py-5" id="reportes">
+    <section class="py-5" id="mensajes">
         <div class="container px-5 my-5">
-            <h2 class="fw-bolder">Reportes Registrados</h2> <br> <br/>
+            <h2 class="fw-bolder">Mensajes Recibidos</h2> <br> <br/>
             <div class="table-responsive">
                 <table class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Colonia</th>
-                            <th>Calle</th>
-                            <th>Tipo de Falla</th>
-                            <th>Descripción</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Mensaje</th>
                             <th>Fecha</th>
-                            <th>Imagen</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         include 'conexion.php';
-                        $sql = "SELECT * FROM reportes";
+                        $sql = "SELECT * FROM contactos ORDER BY fecha DESC";
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 echo '<tr>';
-                                echo '<td>' . htmlspecialchars($row['colonia']) . '</td>';
-                                echo '<td>' . htmlspecialchars($row['calle']) . '</td>';
-                                echo '<td>' . htmlspecialchars($row['tipo_falla']) . '</td>';
-                                echo '<td>' . htmlspecialchars($row['descripcion']) . '</td>';
+                                echo '<td>' . htmlspecialchars($row['nombre']) . '</td>';
+                                echo '<td>' . htmlspecialchars($row['correo']) . '</td>';
+                                echo '<td>' . htmlspecialchars($row['mensaje']) . '</td>';
                                 echo '<td>' . htmlspecialchars($row['fecha']) . '</td>';
-                                echo '<td>';
-                                if (!empty($row['imagen'])) {
-                                    echo '<a href="' . htmlspecialchars($row['imagen']) . '" target="_blank">Ver Imagen</a>';
-                                } else {
-                                    echo 'No disponible';
-                                }
-                                echo '</td>';
-                                echo '<td><form method="POST" action="eliminar_reporte.php">
-                                        <input type="hidden" name="id" value="' . $row['id'] . '">
-                                                <input type="hidden" name="tabla" value="reportes">
-                                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                                      </form></td>';
+                                echo '<td>
+                                        <form method="POST" action="eliminar_reporte.php">
+                                            <input type="hidden" name="id" value="' . $row['id'] . '">
+                                            <input type="hidden" name="tabla" value="contactos">
+                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                        </form>
+                                      </td>';
                                 echo '</tr>';
                             }
                         } else {
-                            echo '<tr><td colspan="7" class="text-center">No hay reportes registrados.</td></tr>';
+                            echo '<tr><td colspan="5" class="text-center">No hay mensajes registrados.</td></tr>';
                         }
 
                         $conn->close();
